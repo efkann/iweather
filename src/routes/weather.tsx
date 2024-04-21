@@ -1,5 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { Drop, RainCloud, Sun, Thermometer, Wind } from '../components/icons/phosphor';
+import {
+  Drop,
+  RainCloud,
+  Spinner,
+  Sun,
+  Thermometer,
+  Wind,
+} from '../components/icons/phosphor';
 import useWeatherById from '../hooks/useWeatherById';
 import useForecastById from '../hooks/useForecastById';
 import { weatherIconsMap } from '../constants';
@@ -15,7 +22,11 @@ function Weather() {
   const { data } = useWeatherById({ id: cityId });
   const { data: forecastData } = useForecastById({ id: cityId });
   if (!data || !forecastData) {
-    return null;
+    return (
+      <div className="mt-48 flex items-center justify-center">
+        <Spinner className="w-8 h-8 text-gray-300 animate-spin" />
+      </div>
+    );
   }
 
   const weatherIcon = weatherIconsMap[data.weather.icon];
