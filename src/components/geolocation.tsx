@@ -45,8 +45,6 @@ export default function Geolocation() {
       </div>
     );
   }
-  console.log({ geolocation });
-
   if (data) {
     return (
       <div className="w-full flex items-center">
