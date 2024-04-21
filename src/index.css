@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  html {
+    font-family: 'Nunito', system-ui, sans-serif;
+    background-image: url('./assets/images/app_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #13131a;
+    color-scheme: dark;
+  }
+
+  /*  Downloaded from https://gwfh.mranftl.com/fonts */
+
+  /* nunito-regular - latin_latin-ext */
+  @font-face {
+    font-display: swap;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/nunito-v26-latin_latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-500 - latin_latin-ext */
+  @font-face {
+    font-display: swap;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./assets/fonts/nunito-v26-latin_latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-600 - latin_latin-ext */
+  @font-face {
+    font-display: swap;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/nunito-v26-latin_latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-700 - latin_latin-ext */
+  @font-face {
+    font-display: swap;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./assets/fonts/nunito-v26-latin_latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+  /* nunito-800 - latin_latin-ext */
+  @font-face {
+    font-display: swap;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    src: url('./assets/fonts/nunito-v26-latin_latin-ext-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+}
