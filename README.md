@@ -55,9 +55,9 @@ npm run dev
 
 ### API Key
 
-I used OpenWeatherMap API for fetching weather data. In an ideal scenario, I would have used a `.env` file to store the API key. Then, proxy the API requests through a server. But, as this is a simple client-side app, I decided to hardcode the API key in the code. This is not a good practice, but it is fine for this project.
+I used OpenWeatherMap API for fetching weather data. In an ideal scenario, I would have used a `.env` file to store the API key. Then, make requests from the server to hide the API key. But, for this project, I decided to hardcode the API key in the code. This is not recommended for production apps, but it is fine for this project.
 
-### Data Fetching and State Management
+### Data Fetching
 
 In this app, there are couple of scenarios where we need to fetch data.
 
@@ -79,7 +79,19 @@ As its stated in the [documentation](https://openweathermap.org/appid)
 > API care recommendations  
 > First, we recommend making API calls no more than once in 10 minutes for each location
 
-I used `zustand` for global state management. It is a simple and fast library for managing global state. We use it only for the settings like units and language.
+### Geolocation
+
+A lot of apps today, use geolocation to provide a better user experience. But they request it immediately when the user enters the app. This can be annoying for the user. So, I decided to ask for geolocation only when the user clicks the button. I believe this provides a better user experience.
+
+### State Management
+
+I used `zustand` for global state management. It is a simple and fast library for managing global state. We use it for the settings like units and language. In an ideal scenario, we would use the browser's language to set the default language but since the design is in English, I set the default language to English.
+
+For managing translations in this application, I decided to go with a simple object to store the translations. In a real-world app that involves more languages and more text, I would use third-party library.
+
+### Progressive Web App
+
+I wanted this app to be installable as a PWA. My choice was using the Vite plugin `vite-plugin-pwa`, a simple plugin that generates a service worker, manifest file, and precaches the assets. Also, `@vite-pwa/assets-generator` is used to generate the icons for the PWA from a single icon.
 
 ### Accesibility
 
