@@ -70,6 +70,8 @@ At first, I thought using a static list of cities for the user to select from wo
 
 > **_NOTE:_** For some Turkish cities, it returns same city names twice. This is due to how OpenweatherMap collects the data.
 
+> **_NOTE:_** UV Index and probability of rain data doesnt exist in Free version of OpenweatherAPI but they were included in the design. So, I used dummy data for them.
+
 I used `react-query` as a data fetching library, because it is a powerful library that makes fetching and caching easier. We use `staleTime` of 10 minutes for the weather data, because OpenWeatherMap updates the data every 10 minutes. So, we can use the cached data for 10 minutes and then refetch the data. For finding a location by a search query, I used `staleTime` of Infinity as the data doesn't change.
 
 As its stated in the [documentation](https://openweathermap.org/appid)
