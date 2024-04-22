@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { axiosInstance } from '../lib/axios';
-import { WeatherIconCode } from '../constants';
-import useSettingsStore from './useSettingsStore';
+import { axiosInstance } from '../../lib/axios';
+import { WeatherIconCode } from '../../constants';
+import useSettingsStore from '../store/useSettingsStore';
 
 type WeatherResponse = {
   name: string;

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useFindCityByCoords from '../hooks/useFindCityByCoords';
+import useFindCityByCoords from '../hooks/queries/useFindCityByCoords';
 import useGeolocation from '../hooks/useGeolocation';
 import { NavigationArrow, PinArea } from './icons/phosphor';
 import { translations } from '../constants';
-import useSettingsStore from '../hooks/useSettingsStore';
+import useSettingsStore from '../hooks/store/useSettingsStore';
 
 export default function Geolocation() {
   const language = useSettingsStore((state) => state.language);

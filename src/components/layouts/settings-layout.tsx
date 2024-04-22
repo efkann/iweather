@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import { CaretLeft } from '../icons/phosphor';
-import useSettingsStore from '../../hooks/useSettingsStore';
+import useSettingsStore from '../../hooks/store/useSettingsStore';
 import { translations } from '../../constants';
 
 function SettingsLayout() {

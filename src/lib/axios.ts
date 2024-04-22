@@ -1,5 +1,5 @@
 import axios from 'axios';
-import useSettingsStore from '../hooks/useSettingsStore';
+import useSettingsStore from '../hooks/store/useSettingsStore';
 
 // Normally, you would want to keep this key secret, but this is a client-side application.
 

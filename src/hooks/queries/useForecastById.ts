@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { axiosInstance } from '../lib/axios';
-import { WeatherIconCode } from '../constants';
-import { getLocaleWeekday } from '../utils';
-import useSettingsStore from './useSettingsStore';
+import { axiosInstance } from '../../lib/axios';
+import { WeatherIconCode } from '../../constants';
+import { getLocaleWeekday } from '../../utils';
+import useSettingsStore from '../store/useSettingsStore';
 
 type ForecastData = Array<{
   name: string;

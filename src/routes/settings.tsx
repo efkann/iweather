@@ -2,7 +2,7 @@ import { GithubLogo, TwitterLogo } from '../components/icons/logo';
 import { CaretRight } from '../components/icons/phosphor';
 import Select, { SelectItem } from '../components/ui/select';
 import { translations } from '../constants';
-import useSettingsStore from '../hooks/useSettingsStore';
+import useSettingsStore from '../hooks/store/useSettingsStore';
 
 const languages = ['english', 'turkish'];
 const unitsSystems = ['metric', 'imperial'];

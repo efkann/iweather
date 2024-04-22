@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { axiosInstance } from '../lib/axios';
-import useSettingsStore from './useSettingsStore';
-import { translations } from '../constants';
+import { axiosInstance } from '../../lib/axios';
+import useSettingsStore from '../store/useSettingsStore';
+import { translations } from '../../constants';
 
 type FindCityResponse = {
   list: Array<{

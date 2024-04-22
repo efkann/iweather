@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Geolocation from '../components/geolocation';
 import { Spinner } from '../components/icons/phosphor';
 import Combobox, { ComboboxItem } from '../components/ui/combobox';
-import useFindCity from '../hooks/useFindCity';
+import useFindCity from '../hooks/queries/useFindCity';
 import { translations } from '../constants';
-import useSettingsStore from '../hooks/useSettingsStore';
+import useSettingsStore from '../hooks/store/useSettingsStore';
 
 const WelcomeText = () => {
   const language = useSettingsStore((state) => state.language);

@@ -2,7 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { CaretLeft } from '../icons/phosphor';
 import { AppLogo } from '../icons/logo';
 import { translations } from '../../constants';
-import useSettingsStore from '../../hooks/useSettingsStore';
+import useSettingsStore from '../../hooks/store/useSettingsStore';
 
 function PageLayout() {
   const language = useSettingsStore((state) => state.language);

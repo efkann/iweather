@@ -7,11 +7,11 @@ import {
   Thermometer,
   Wind,
 } from '../components/icons/phosphor';
-import useWeatherById from '../hooks/useWeatherById';
-import useForecastById from '../hooks/useForecastById';
+import useWeatherById from '../hooks/queries/useWeatherById';
+import useForecastById from '../hooks/queries/useForecastById';
 import { translations, units, weatherIconsMap } from '../constants';
 import { getLocaleDateString } from '../utils';
-import useSettingsStore from '../hooks/useSettingsStore';
+import useSettingsStore from '../hooks/store/useSettingsStore';
 
 function Weather() {
   const { cityId } = useParams();

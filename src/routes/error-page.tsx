@@ -1,5 +1,5 @@
 import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
-import useSettingsStore from '../hooks/useSettingsStore';
+import useSettingsStore from '../hooks/store/useSettingsStore';
 import { translations } from '../constants';
 
 export default function ErrorPage() {
