@@ -21,3 +21,14 @@ export const weatherIconsMap = {
   '50d': 'storm_day',
   '50n': 'storm_night',
 } as const;
+
+export const units = {
+  metric: {
+    temperature: '°c',
+    windSpeed: 'km/h',
+  },
+  imperial: {
+    temperature: '°F',
+    windSpeed: 'mph',
+  },
+} as const;

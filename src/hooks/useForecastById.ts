@@ -53,9 +53,11 @@ function getCalculatedMinMax(forecastData: ForecastData) {
 
 export default function useForecastById({ id }: { id: string }) {
   const language = useSettingsStore((state) => state.language);
+  const unitsSystem = useSettingsStore((state) => state.unitsSystem);
   const locale = language === 'english' ? 'en-US' : 'tr-TR';
+
   return useQuery({
-    queryKey: ['forecast', id],
+    queryKey: ['forecast', id, unitsSystem],
     queryFn: async () => {
       const response = await axiosInstance.get(`/forecast?id=${id}`);
       const data: ForecastResponse = response.data;

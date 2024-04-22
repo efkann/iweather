@@ -7,15 +7,16 @@ export const axiosInstance = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5',
   params: {
     appid: OPENWEATHERMAP_API_KEY,
-    units: 'metric',
+    units: useSettingsStore.getState().unitsSystem,
     lang: useSettingsStore.getState().language === 'english' ? 'en' : 'tr',
   },
 });
 
 useSettingsStore.subscribe(
-  (state) => [state.language],
+  (state) => [state.language, state.unitsSystem],
   (state) => {
-    const [language] = state;
+    const [language, unitsSystem] = state;
     axiosInstance.defaults.params.lang = language === 'english' ? 'en' : 'tr';
+    axiosInstance.defaults.params.units = unitsSystem;
   }
 );

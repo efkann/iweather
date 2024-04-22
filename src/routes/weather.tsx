@@ -9,21 +9,23 @@ import {
 } from '../components/icons/phosphor';
 import useWeatherById from '../hooks/useWeatherById';
 import useForecastById from '../hooks/useForecastById';
-import { weatherIconsMap } from '../constants';
+import { units, weatherIconsMap } from '../constants';
 import { getLocaleDateString } from '../utils';
 import useSettingsStore from '../hooks/useSettingsStore';
 
 function Weather() {
   const { cityId } = useParams();
-
   if (!cityId) {
     throw new Error('City id is required');
   }
+
   const language = useSettingsStore((state) => state.language);
+  const unitsSystem = useSettingsStore((state) => state.unitsSystem);
   const locale = language === 'english' ? 'en-US' : 'tr-TR';
 
   const { data } = useWeatherById({ id: cityId });
   const { data: forecastData } = useForecastById({ id: cityId });
+
   if (!data || !forecastData) {
     return (
       <div className="mt-48 flex items-center justify-center">
@@ -46,7 +48,7 @@ function Weather() {
           <div className="p-5">
             <div>
               <h1 className="text-heading-sm lg:text-heading-lg font-bold text-gray-100">
-                {data?.name}
+                {data.name}
               </h1>
               <time className="text-xs lg:text-heading-md text-gray-100">
                 {getLocaleDateString(locale, data.dt * 1000)}
@@ -55,10 +57,13 @@ function Weather() {
             <div className="flex items-end justify-between mt-24">
               <div className="flex flex-col">
                 <span className="text-heading-xl font-extrabold">
-                  {Math.round(data.main.temp)}ºc
+                  {Math.round(data.main.temp)}
+                  {units[unitsSystem].temperature}
                 </span>
                 <span className="text-heading-sm font-bold mt-2">
-                  {Math.floor(data.main.temp_min)}ºc / {Math.floor(data.main.temp_max)}ºc
+                  {`${Math.floor(data.main.temp_min)}${
+                    units[unitsSystem].temperature
+                  } / ${Math.floor(data.main.temp_max)}${units[unitsSystem].temperature}`}
                 </span>
                 <span className="text-sm first-letter:capitalize">
                   {data.weather?.description}
@@ -79,7 +84,8 @@ function Weather() {
             <Thermometer aria-hidden className="text-gray-500 w-6 h-6" />
             <dt className="text-heading-xs text-gray-200">Thermal sensation</dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">
-              {Math.round(data.main.feels_like)}ºc
+              {Math.round(data.main.feels_like)}
+              {units[unitsSystem].temperature}
             </dd>
           </div>
           <div className="flex items-center gap-3 py-4">
@@ -91,7 +97,7 @@ function Weather() {
             <Wind aria-hidden className="text-gray-500 w-6 h-6" />
             <dt className="text-heading-xs text-gray-200">Wind speed</dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">
-              {data.wind.speed} km/h
+              {`${data.wind.speed} ${units[unitsSystem].windSpeed}`}
             </dd>
           </div>
           <div className="flex items-center gap-3 py-4">
@@ -127,10 +133,12 @@ function Weather() {
               />
               <div className="flex flex-col items-center">
                 <span className="text-heading-xs font-bold text-gray-100">
-                  {day.max}ºc
+                  {day.max}
+                  {units[unitsSystem].temperature}
                 </span>
                 <span className="text-heading-xs font-bold text-gray-400">
-                  {day.min}ºc
+                  {day.min}
+                  {units[unitsSystem].temperature}
                 </span>
               </div>
             </div>

@@ -34,8 +34,10 @@ type WeatherResponse = {
 export default function useWeatherById({ id }: { id: string }) {
   // Weather description depends on the language so we need to include it in the query key
   const language = useSettingsStore((state) => state.language);
+  const unitsSystem = useSettingsStore((state) => state.unitsSystem);
+
   return useQuery({
-    queryKey: ['weather', id, language],
+    queryKey: ['weather', id, language, unitsSystem],
     queryFn: async () => {
       const response = await axiosInstance.get(`/weather?id=${id}`);
       const data: WeatherResponse = response.data;
