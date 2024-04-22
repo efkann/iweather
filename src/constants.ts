@@ -76,7 +76,7 @@ export const translations = {
     'error-geolocation-denied': 'İzin reddildi, bu özelliği kullanmak için izni sıfırla.',
     'error-no-cities-found': 'Arama kriterlerine uygun şehir bulunamadı.',
     'openweathermap-api':
-      "Bu uygulama, hava durumu verilerini almak için OpenWeatherMap API kullanmaktadır. API'nın formatını ve özelliklerini keşfet.",
+      "Bu uygulama, hava durumu verilerini almak için OpenWeatherMap API kullanmaktadır. API'nın formatını ve özelliklerini keşfedebilirsin.",
     'github-repo':
       'Bu proje açık kaynaklıdır. Kaynak kodu Github repomdan kontrol etmekten çekinmeyin.',
     'twitter-contact':

@@ -67,6 +67,8 @@ function Settings() {
             className="flex-shrink-0 w-6 h-6 text-gray-100 transition-transform group-hover:-translate-x-1"
           />
         </a>
+      </div>
+      <div className="mt-4 flex flex-col rounded-2xl bg-gray-600 text-gray-100 divide-y-2 divide-gray-800">
         <a
           href="https://github.com/efkann"
           className="flex items-center justify-between px-2 group"
