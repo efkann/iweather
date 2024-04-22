@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../lib/axios';
 import { WeatherIconCode } from '../constants';
 import { getLocaleWeekday } from '../utils';
+import useSettingsStore from './useSettingsStore';
 
 type ForecastData = Array<{
   name: string;
@@ -51,6 +52,8 @@ function getCalculatedMinMax(forecastData: ForecastData) {
 }
 
 export default function useForecastById({ id }: { id: string }) {
+  const language = useSettingsStore((state) => state.language);
+  const locale = language === 'english' ? 'en-US' : 'tr-TR';
   return useQuery({
     queryKey: ['forecast', id],
     queryFn: async () => {
@@ -60,7 +63,7 @@ export default function useForecastById({ id }: { id: string }) {
     },
     select: (data) => {
       const allData = data.list.map((item) => ({
-        name: getLocaleWeekday('en-US', new Date(item.dt_txt).getTime()),
+        name: getLocaleWeekday(locale, new Date(item.dt_txt).getTime()),
         time: item.dt_txt.split(' ')[1], // Get only time
         icon: item?.weather?.[0] ? item.weather[0].icon : '00d',
         max: Math.floor(item.main.temp_max),

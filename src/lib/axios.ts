@@ -1,4 +1,5 @@
 import axios from 'axios';
+import useSettingsStore from '../hooks/useSettingsStore';
 
 const OPENWEATHERMAP_API_KEY = 'fdc6992d1be2e5d2322ea8ddafd29a57';
 
@@ -7,6 +8,14 @@ export const axiosInstance = axios.create({
   params: {
     appid: OPENWEATHERMAP_API_KEY,
     units: 'metric',
-    lang: 'en',
+    lang: useSettingsStore.getState().language === 'english' ? 'en' : 'tr',
   },
 });
+
+useSettingsStore.subscribe(
+  (state) => [state.language],
+  (state) => {
+    const [language] = state;
+    axiosInstance.defaults.params.lang = language === 'english' ? 'en' : 'tr';
+  }
+);

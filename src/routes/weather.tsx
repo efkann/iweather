@@ -11,6 +11,7 @@ import useWeatherById from '../hooks/useWeatherById';
 import useForecastById from '../hooks/useForecastById';
 import { weatherIconsMap } from '../constants';
 import { getLocaleDateString } from '../utils';
+import useSettingsStore from '../hooks/useSettingsStore';
 
 function Weather() {
   const { cityId } = useParams();
@@ -18,6 +19,8 @@ function Weather() {
   if (!cityId) {
     throw new Error('City id is required');
   }
+  const language = useSettingsStore((state) => state.language);
+  const locale = language === 'english' ? 'en-US' : 'tr-TR';
 
   const { data } = useWeatherById({ id: cityId });
   const { data: forecastData } = useForecastById({ id: cityId });
@@ -46,7 +49,7 @@ function Weather() {
                 {data?.name}
               </h1>
               <time className="text-xs lg:text-heading-md text-gray-100">
-                {getLocaleDateString('en-US', data.dt * 1000)}
+                {getLocaleDateString(locale, data.dt * 1000)}
               </time>
             </div>
             <div className="flex items-end justify-between mt-24">

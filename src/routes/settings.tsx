@@ -1,21 +1,27 @@
 import { GithubLogo, TwitterLogo } from '../components/icons/logo';
 import { CaretRight } from '../components/icons/phosphor';
 import Select, { SelectItem } from '../components/ui/select';
+import useSettingsStore from '../hooks/useSettingsStore';
 
-const items = ['English', 'Turkish', 'Spanish', 'French', 'German'];
-const units = ['Metric', 'Imperial', 'Standard'];
+const languages = ['english', 'turkish'];
+const unitsSystems = ['metric', 'imperial'];
 
 function Settings() {
+  const language = useSettingsStore((state) => state.language);
+  const setLanguage = useSettingsStore((state) => state.setLanguage);
+  const unitsSystem = useSettingsStore((state) => state.unitsSystem);
+  const setUnitsSystem = useSettingsStore((state) => state.setUnitsSystem);
+
   return (
     <div className="w-full px-2">
       <div className="bg-gray-600 rounded-2xl divide-y-2 divide-gray-800">
         <div className="flex justify-between items-center p-4 gap-2">
-          <Select label="Language">
-            {items.map((item) => (
+          <Select label="Language" value={language} setValue={setLanguage}>
+            {languages.map((item) => (
               <SelectItem
                 key={item}
                 value={item}
-                className="![outline:none] flex gap-2 items-center scroll-m-2 cursor-default rounded p-2 aria-disabled:opacity-50 data-[active-item]:text-gray-100 data-[active-item]:bg-blue-600"
+                className="![outline:none] flex gap-2 items-center scroll-m-2 cursor-default rounded p-2 aria-disabled:opacity-50 data-[active-item]:text-gray-100 data-[active-item]:bg-blue-600 capitalize"
               >
                 {item}
               </SelectItem>
@@ -23,25 +29,12 @@ function Settings() {
           </Select>
         </div>
         <div className="flex justify-between items-center p-4 gap-2">
-          <Select label="Units">
-            {units.map((item) => (
+          <Select label="Units" value={unitsSystem} setValue={setUnitsSystem}>
+            {unitsSystems.map((item) => (
               <SelectItem
                 key={item}
                 value={item}
-                className="![outline:none] flex gap-2 items-center scroll-m-2 cursor-default rounded p-2 aria-disabled:opacity-50 text-gray-100 data-[active-item]:text-gray-100 data-[active-item]:bg-blue-600"
-              >
-                {item}
-              </SelectItem>
-            ))}
-          </Select>
-        </div>
-        <div className="flex justify-between items-center p-4 gap-2">
-          <Select label="Units">
-            {units.map((item) => (
-              <SelectItem
-                key={item}
-                value={item}
-                className="![outline:none] flex gap-2 items-center scroll-m-2 cursor-default rounded p-2 aria-disabled:opacity-50 text-gray-100 data-[active-item]:text-gray-100 data-[active-item]:bg-blue-600"
+                className="![outline:none] flex gap-2 items-center scroll-m-2 cursor-default rounded p-2 aria-disabled:opacity-50 text-gray-100 data-[active-item]:text-gray-100 data-[active-item]:bg-blue-600 capitalize"
               >
                 {item}
               </SelectItem>
