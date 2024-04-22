@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../lib/axios';
+import useSettingsStore from './useSettingsStore';
+import { translations } from '../constants';
 
 type FindCityResponse = {
   list: Array<{
@@ -23,6 +25,8 @@ export default function useFindCityByCoords({
   lat: number | null;
   lon: number | null;
 }) {
+  const language = useSettingsStore((state) => state.language);
+
   return useQuery({
     queryKey: ['findCityByCoords', lat, lon],
     queryFn: async () => {
@@ -30,7 +34,7 @@ export default function useFindCityByCoords({
       const data: FindCityResponse = response.data;
 
       if (data === undefined || data.list.length === 0) {
-        throw new Error('No cities found for your search.');
+        throw new Error(translations[language]['error-no-cities-found']);
       }
       const city = data.list[0];
       return city;

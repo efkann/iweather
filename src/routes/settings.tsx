@@ -1,6 +1,7 @@
 import { GithubLogo, TwitterLogo } from '../components/icons/logo';
 import { CaretRight } from '../components/icons/phosphor';
 import Select, { SelectItem } from '../components/ui/select';
+import { translations } from '../constants';
 import useSettingsStore from '../hooks/useSettingsStore';
 
 const languages = ['english', 'turkish'];
@@ -16,7 +17,11 @@ function Settings() {
     <div className="w-full px-2">
       <div className="bg-gray-600 rounded-2xl divide-y-2 divide-gray-800">
         <div className="flex justify-between items-center p-4 gap-2">
-          <Select label="Language" value={language} setValue={setLanguage}>
+          <Select
+            label={translations[language]['settings-language']}
+            value={language}
+            setValue={setLanguage}
+          >
             {languages.map((item) => (
               <SelectItem
                 key={item}
@@ -29,7 +34,11 @@ function Settings() {
           </Select>
         </div>
         <div className="flex justify-between items-center p-4 gap-2">
-          <Select label="Units" value={unitsSystem} setValue={setUnitsSystem}>
+          <Select
+            label={translations[language]['settings-units']}
+            value={unitsSystem}
+            setValue={setUnitsSystem}
+          >
             {unitsSystems.map((item) => (
               <SelectItem
                 key={item}
@@ -48,10 +57,7 @@ function Settings() {
           className="flex items-center justify-between px-2 group"
         >
           <div className="p-4">
-            <p>
-              This app uses OpenWeatherMap API to retrieve weather data. Explore the
-              format and features of the API.
-            </p>
+            <p>{translations[language]['openweathermap-api']}</p>
             <span className="underline underline-offset-4">
               https://openweathermap.org/current
             </span>
@@ -66,10 +72,7 @@ function Settings() {
           className="flex items-center justify-between px-2 group"
         >
           <div className="p-4">
-            <p>
-              This project is open source. Feel free to check out the source code on my
-              Github repository.
-            </p>
+            <p>{translations[language]['github-repo']}</p>
             <span className="underline underline-offset-4">
               https://github.com/efkann
             </span>
@@ -84,7 +87,7 @@ function Settings() {
           className="flex items-center justify-between px-2 group"
         >
           <div className="p-4">
-            <p>Have something to say? Even just to say hi, reach out to me on Twitter</p>
+            <p>{translations[language]['twitter-contact']}</p>
             <span className="underline underline-offset-4">
               https://twitter.com/mefkansec
             </span>

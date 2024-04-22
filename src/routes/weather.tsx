@@ -9,7 +9,7 @@ import {
 } from '../components/icons/phosphor';
 import useWeatherById from '../hooks/useWeatherById';
 import useForecastById from '../hooks/useForecastById';
-import { units, weatherIconsMap } from '../constants';
+import { translations, units, weatherIconsMap } from '../constants';
 import { getLocaleDateString } from '../utils';
 import useSettingsStore from '../hooks/useSettingsStore';
 
@@ -82,7 +82,9 @@ function Weather() {
         <dl className="w-full divide-y divide-gray-700">
           <div className="flex items-center gap-3 py-4">
             <Thermometer aria-hidden className="text-gray-500 w-6 h-6" />
-            <dt className="text-heading-xs text-gray-200">Thermal sensation</dt>
+            <dt className="text-heading-xs text-gray-200">
+              {translations[language]['weather-thermal-sensation']}
+            </dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">
               {Math.round(data.main.feels_like)}
               {units[unitsSystem].temperature}
@@ -90,26 +92,34 @@ function Weather() {
           </div>
           <div className="flex items-center gap-3 py-4">
             <RainCloud aria-hidden className="text-gray-500 w-6 h-6" />
-            <dt className="text-heading-xs text-gray-200">Probability of rain</dt>
+            <dt className="text-heading-xs text-gray-200">
+              {translations[language]['weather-probability-of-rain']}
+            </dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">0%</dd>
           </div>
           <div className="flex items-center gap-3 py-4">
             <Wind aria-hidden className="text-gray-500 w-6 h-6" />
-            <dt className="text-heading-xs text-gray-200">Wind speed</dt>
+            <dt className="text-heading-xs text-gray-200">
+              {translations[language]['weather-wind-speed']}
+            </dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">
               {`${data.wind.speed} ${units[unitsSystem].windSpeed}`}
             </dd>
           </div>
           <div className="flex items-center gap-3 py-4">
             <Drop aria-hidden className="text-gray-500 w-6 h-6" />
-            <dt className="text-heading-xs text-gray-200">Air humidity</dt>
+            <dt className="text-heading-xs text-gray-200">
+              {translations[language]['weather-air-humidity']}
+            </dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">
               {data.main.humidity}%
             </dd>
           </div>
           <div className="flex items-center gap-3 py-4">
             <Sun aria-hidden className="text-gray-500 w-6 h-6" />
-            <dt className="text-heading-xs text-gray-200">UV Index</dt>
+            <dt className="text-heading-xs text-gray-200">
+              {translations[language]['weather-uv-index']}
+            </dt>
             <dd className="text-gray-100 ml-auto text-heading-sm">5</dd>
           </div>
         </dl>

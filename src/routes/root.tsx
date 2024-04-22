@@ -4,6 +4,26 @@ import Geolocation from '../components/geolocation';
 import { Spinner } from '../components/icons/phosphor';
 import Combobox, { ComboboxItem } from '../components/ui/combobox';
 import useFindCity from '../hooks/useFindCity';
+import { translations } from '../constants';
+import useSettingsStore from '../hooks/useSettingsStore';
+
+const WelcomeText = () => {
+  const language = useSettingsStore((state) => state.language);
+
+  if (language === 'english') {
+    return (
+      <>
+        {language === 'english' && 'Welcome to'}{' '}
+        <span className="text-blue-light">iWeather</span>
+      </>
+    );
+  }
+  return (
+    <>
+      <span className="text-blue-light">iWeather'a</span> hoşgeldin
+    </>
+  );
+};
 
 function Root() {
   const navigate = useNavigate();
@@ -11,14 +31,16 @@ function Root() {
   const [searchValue, setSearchValue] = useState<string>('');
   const { data: cities, isFetching, error } = useFindCity({ searchQuery: searchValue });
 
+  const language = useSettingsStore((state) => state.language);
+
   return (
     <>
       <div className="flex flex-col gap-2 mt-48">
         <h2 className="text-heading-md text-gray-100 lg:text-2xl text-center font-bold">
-          Welcome to <span className="text-blue-light">iWeather</span>
+          {<WelcomeText />}
         </h2>
         <p className="text-sm lg:text-lg text-center text-gray-200">
-          Choose a location to see the weather forecast
+          {translations[language]['welcome-subheader']}
         </p>
         <Geolocation />
       </div>
@@ -30,6 +52,7 @@ function Root() {
           setSelectedValue={(value) => {
             navigate(`/weather/${value}`);
           }}
+          placeholder={translations[language]['search-placeholder']}
           loadingIcon={
             isFetching ? (
               <div

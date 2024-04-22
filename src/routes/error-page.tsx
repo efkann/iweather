@@ -1,8 +1,11 @@
 import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom';
+import useSettingsStore from '../hooks/useSettingsStore';
+import { translations } from '../constants';
 
 export default function ErrorPage() {
   const error = useRouteError();
   let errorMessage: string;
+  const language = useSettingsStore((state) => state.language);
 
   if (isRouteErrorResponse(error)) {
     errorMessage = error.data?.message || error.statusText;
@@ -18,12 +21,12 @@ export default function ErrorPage() {
   return (
     <div className="min-h-full flex gap-2 flex-col items-center justify-center">
       <h1 className="text-heading-md text-gray-100">Oops!</h1>
-      <p>Sorry, something unexpected happened.</p>
+      <p>{translations[language]['error-message']}</p>
       <p>
         <span className="italic text-gray-200">{errorMessage}</span>
       </p>
       <Link className="mt-2 underline underline-offset-2 text-gray-100" to="/">
-        Go back to home page
+        {translations[language]['error-go-back']}
       </Link>
     </div>
   );

@@ -1,6 +1,8 @@
 import axios from 'axios';
 import useSettingsStore from '../hooks/useSettingsStore';
 
+// Normally, you would want to keep this key secret, but this is a client-side application.
+
 const OPENWEATHERMAP_API_KEY = 'fdc6992d1be2e5d2322ea8ddafd29a57';
 
 export const axiosInstance = axios.create({

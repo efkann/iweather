@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import useFindCityByCoords from '../hooks/useFindCityByCoords';
 import useGeolocation from '../hooks/useGeolocation';
 import { NavigationArrow, PinArea } from './icons/phosphor';
+import { translations } from '../constants';
+import useSettingsStore from '../hooks/useSettingsStore';
 
 export default function Geolocation() {
+  const language = useSettingsStore((state) => state.language);
   const [geolocationStarted, setGeolocationStarted] = useState(false);
   const geolocation = useGeolocation({}, geolocationStarted);
   let error = null;
@@ -45,6 +48,7 @@ export default function Geolocation() {
       </div>
     );
   }
+
   if (data) {
     return (
       <div className="w-full flex items-center">
@@ -70,8 +74,10 @@ export default function Geolocation() {
       >
         <NavigationArrow aria-hidden className="h-5 w-5 rotate-90" />
         <span className="text-sm lg:text-base">
-          {!isLoading && !hasCoordinates ? 'Use my current location' : null}
-          {isLoading ? 'Retrieving your location...' : null}
+          {!isLoading && !hasCoordinates
+            ? translations[language]['current-location']
+            : null}
+          {isLoading ? translations[language]['current-location-loading'] : null}
         </span>
       </button>
     </div>
