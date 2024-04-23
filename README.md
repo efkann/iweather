@@ -53,6 +53,12 @@ npm run dev
 
 ## Important Decisions
 
+## Design
+
+Following the Figma file, I tried to make the app as close to the design as possible. I extended my `tailwind.config.js` to use the matching typography and colors. I also used the same icons from the design.
+
+I think, it was a good challenge to keep the design simple and elegant while adding new features.
+
 ### API Key
 
 I used OpenWeatherMap API for fetching weather data. In an ideal scenario, I would have used a `.env` file to store the API key. Then, make requests from the server to hide the API key. But, for this project, I decided to hardcode the API key in the code. This is not recommended for production apps, but it is fine for this project.
