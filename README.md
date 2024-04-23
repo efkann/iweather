@@ -53,7 +53,7 @@ npm run dev
 
 ## Important Decisions
 
-## Design
+### Design
 
 Following the Figma file, I tried to make the app as close to the design as possible. I extended my `tailwind.config.js` to use the matching typography and colors. I also used the same icons from the design.
 
