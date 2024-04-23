@@ -76,7 +76,7 @@ function Settings() {
           <div className="p-4">
             <p>{translations[language]['github-repo']}</p>
             <span className="underline underline-offset-4">
-              https://github.com/efkann
+              https://github.com/efkann/iweather
             </span>
           </div>
           <GithubLogo
