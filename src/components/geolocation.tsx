@@ -14,7 +14,7 @@ export default function Geolocation() {
   if (geolocation.error) {
     const permissionError = geolocation.error?.message === 'User denied Geolocation';
     if (permissionError) {
-      error = 'Denied permission, reset to use this feature.';
+      error = translations[language]['error-geolocation-denied'];
     } else {
       error = geolocation.error?.message;
     }
